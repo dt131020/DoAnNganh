@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="/shared/layout :: dynamic(~{::main})">
+
+<main th:fragment="main">
+	<br> <br> 
+	<div>
+	<i th:text="${message}">message</i>
+    <form action="/account/retrieve-password" method="post">
+        <label>Username:</label><br>
+        <input name="username"><br>
+        
+        <label>Email Address:</label><br>
+        <input name="email" type="email"><br>
+        
+        <hr>
+        <button>Retrieve Password</button>
+
+		</form>
+	</div>
+
+	
+	
+</main>
+</html>

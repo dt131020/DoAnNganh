@@ -1,0 +1,11 @@
+package weblaptoponline.Homecontroller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+public class ProductController {
+
+		@RequestMapping("/product/index")
+		public String index() {
+			return home/index";
+		}
+}

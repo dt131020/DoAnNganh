@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="/shared/layout::dynamic(~{::view})">
+
+<div th:fragment="view">
+	<link rel="stylesheet" type="text/css" href="/css/form.css">
+
+		<div th:replace="/cart/view :: view">Cart</div>
+		</br>
+		</br>
+		<i th:text="${message}" class="text-end"></i>
+				<form class="purchase" id="form" action="/order/purchase" method="post">
+					<div class="input-box">
+						<span>Recipient: </span>
+						<input type="text" name="recipient" id="recipient"  >
+						
+					</div>
+					<div class="input-box">
+						<span>Address: </span>
+						<input type="text" name="address"  id="recipient" >
+					</div>
+					<div class="input-box">
+						<span>Phone: </span>
+						<input type="text" name="mobile"  id="recipient" >
+
+					</div>
+					<div class="input-box">
+						<span>Notes: </span>
+						<textarea type="text" name="notes" row="3"></textarea>
+					</div>
+
+					<button id="button">Checkout</button>
+				</form>
+</div>
+
+</html>

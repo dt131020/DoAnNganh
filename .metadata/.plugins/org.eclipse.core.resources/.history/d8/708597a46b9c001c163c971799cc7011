@@ -1,0 +1,5 @@
+package weblaptopnonline.interceptor;
+
+public class Appinterceptor {
+
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="/shared/layout :: dynamic(~{::main})">
+
+<main th:fragment="main">
+	<br> <br> 
+	<div>
+	<i th:text="${message}">message</i>
+	<form action="/account/sign-up/create"
+		method="post" encrtype="multipart/form-data">
+		<label>Username:</label><br>
+		<input name="username" placeholder="don't leave it blank"><br>
+		<label>Password:</label><br>
+		<input name="password" type="password" placeholder="don't leave it blank"><br>
+		<label>Confirm Password:</label><br>
+		<input name="confirm" type="password" placeholder="don't leave it blank"><br>
+		<label>Fullname:</label><br>
+		<input name="fullname" placeholder="don't leave it blank"><br>
+		<label>Email:</label><br>
+		<input name="email" placeholder="don't leave it blank"><br>
+		<label>Address:</label><br>
+		<input name="address" placeholder="don't leave it blank"><br>
+		<label>Mobile:</label><br>
+		<input name="mobile" placeholder="don't leave it blank"><br>
+		<label>Photo:</label><br>
+		<input name="photo" type="file" placeholder="don't leave it blank"><br>
+		</form>
+	</div>
+
+	
+	
+</main>
+</html>

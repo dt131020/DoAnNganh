@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="/shared/layout::dynamic(~{::view})" >
+
+<div th:fragment="view">
+<br><br>
+ <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>UnitPrice</th>
+        <th>Discount</th>
+        <th>Quantity</th>
+        <th>Amoiunt</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <th:block>
+      <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>UnitPrice</td>
+        <td>Discount</td>
+        <td>
+		<input type="number" min="1"> 
+		</td>
+        <td>Amount</td>
+        <td>
+        <button>Remove</button>
+        </td>
+      </tr>
+    </th:block>
+    </tbody>
+  </table>
+  <button>Clear</button>
+  <button>Checkout</button>
+</div>
+
+  
+</html>

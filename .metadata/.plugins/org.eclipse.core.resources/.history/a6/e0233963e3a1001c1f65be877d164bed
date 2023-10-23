@@ -1,0 +1,5 @@
+package weblaptoponline.service;
+
+public class ShoppingCartService {
+
+}

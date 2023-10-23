@@ -1,0 +1,23 @@
+$(document).ready(function(){
+	$(".cart-add").on("click",function(){
+		var id = $(this).attr("id");
+		var url= `/api/cart/add/${id}`;
+		$.getJSON(url).then(info =>{
+			showCartInfo(info);
+			
+		})
+	});
+	$(".cart-remove").on("click",function(){
+		var id = $(this).attr("id");
+		var url= `/api/cart/remove/${id}`;
+		$.getJSON(url).then(info =>{
+			showCartInfo(info);
+			$(this).closes("tr").remove();	
+		})
+	})
+});
+
+
+function showCartInfo(info){
+	$("#cart-info").html(` ${info.amount}`);
+}

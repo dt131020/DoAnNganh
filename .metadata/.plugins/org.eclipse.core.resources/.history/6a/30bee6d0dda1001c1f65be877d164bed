@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="/shared/layout :: dynamic(~{::main})">
+
+    <main th:fragment="main">
+      TRANG CHỦ 
+    </main>
+</html>

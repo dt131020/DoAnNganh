@@ -1,0 +1,16 @@
+package weblaptoponline.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Table;
+import javax.persistence.MaLoai;
+
+@Entity
+@Table(name="LoaiSP")
+public class Category {
+	@Id
+	@GeneratedValue()
+	
+Integer Id;
+String TenLoai;
+}

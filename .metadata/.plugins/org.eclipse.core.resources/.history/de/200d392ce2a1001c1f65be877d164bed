@@ -1,0 +1,12 @@
+$(document).ready(function(){
+	$(".cart-add").on("click",function(){
+		var id = $(this).attr("id");
+		var url=`/api/cart/add/${id}`;
+		$.getJSON(url).then(info => {
+			console.log(info)
+			$("#cart-info").html(`${info.amout}`)
+
+		})
+		
+	})
+})

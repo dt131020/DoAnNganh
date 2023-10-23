@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+    	  $.getJSON("/api/admin/report/inventory").then(resp => {
+				var data = resp.map(r => [r.group, r.sum]);
+				data.unshift(['Loại','Tổng giá trị']);
+				
+				var data = google.visualization.arrayToDataTable(data);
+				var options = {
+				  title: 'My Daily Activities'
+				};
+				var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+				chart.draw(data, options);
+    	  })
+      }
+    </script>
+  </head>
+  <body>
+    <div id="piechart" style="width: 1200px; height: 800px;"></div>
+  </body>
+</html>

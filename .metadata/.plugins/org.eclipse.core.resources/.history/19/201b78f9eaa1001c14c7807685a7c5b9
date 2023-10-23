@@ -1,0 +1,31 @@
+$(document).ready(function(){
+	$(".cart-add").on("click",function(){
+		var id = $(this).attr("id");
+		var url= `/api/cart/add/${id}`;
+		$.getJSON(url).then(info =>{
+			showCartInfo(info);
+			
+		})
+	});
+	$(".cart-remove").on("click",function(){
+		var id = $(this).attr("id");
+		var url= `/api/cart/remove/${id}`;
+		$.getJSON(url).then(info =>{
+			showCartInfo(info);
+			$(this).closest("tr").remove();	
+		})
+	});
+	$(".cart-update").on("input",function(){
+		var id = $(this).attr("id");
+		var url= `/api/cart/update/${id}/${qty}`;
+		$.getJSON(url).then(info =>{
+			showCartInfo(info);
+			$(this).closest("tr").remove();	
+		})
+	})
+});
+
+
+function showCartInfo(info){
+	$("#cart-info").html(` ${info.count}`);
+}

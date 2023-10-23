@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="/shared/layout::dynamic(~{::view})" >
+
+<div th:fragment="view">
+<br><br>
+ <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>UnitPrice</th>
+        <th>Discount</th>
+        <th>Quantity</th>
+        <th>Amoiunt</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="p:${cart.items}">
+      <tr>
+        <td th:text="${p.id}">ID</td>
+        <td th:text="${p.name}">Name</td>
+        <td th:text="${p.unitPrice}">UnitPrice</td>
+        <td th:text="${p.disCount}">Discount</td>
+        <td>
+		<input th:value="${p.quantity}" type="number" min="1"> 
+		</td>
+        <td th:text="${p.quantity*p.unitPrice*(1-p.disCount)}">Amount</td>
+        <td>
+        <button class="cart-remove">Remove</button>
+        </td>
+      </tr>
+    </th:block>
+    </tbody>
+  </table>
+  <button>Clear</button>
+  <button>Checkout</button>
+</div>
+
+  
+</html>

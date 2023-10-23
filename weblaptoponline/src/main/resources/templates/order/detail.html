@@ -1,0 +1,75 @@
+<html xmlns:th="http://www.thymeleaf.org"
+		th:replace="/shared/layout::dynamic(~{::view})">
+<main th:fragment="view">
+<link rel="stylesheet" type="text/css" href="/css/admin.css">
+
+<section class="panel important">
+	<div th:object="${order}">
+	<div class="twothirds">
+		<label>Order Id: </label>
+		<input th:field="*{id}" readonly>
+		<br>
+		
+		<label>Order Date:</label>
+		<input th:field="*{orderDate}" readonly>
+		<br>
+		
+		<label>Total Amount:</label>
+		<input  th:value="*{amount}" readonly>
+		<br>
+	
+  		<label>Order Status:</label>
+        <input th:value="${statuses.get(order.statusId)}" readonly>
+        <br>
+        
+        <label>Recipient Name:</label>
+		<input  th:field="*{recipient}">
+		<br>
+		
+        </div>
+		 <div class="onethird">
+		
+		<label>Contact Mobile:</label>
+		<input th:field="*{mobile}">
+		<br>
+		
+		<label>Address:</label>
+		<input type="text" th:field="*{address}">
+		<br>
+		
+		<label>Notes:</label>
+		<input th:field="*{notes}">
+		<br>
+		</div> 
+	</div>
+	</section>
+
+	 <section class="panel important">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Unit Price</th>
+				<th>Discount</th>
+				<th>Quantity</th>
+				<th>Amount</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+			<tr th:each="d: ${order.orderDetails}">
+				<td th:text="${d.product.id}">id</td>
+				<td th:text="${d.product.name}">name</td>
+				<td th:text="${d.unitPrice}">price</td>
+				<td th:text="${d.discount}">discount</td>
+				<td th:text="${d.quantity}">quantity</td>
+				<td th:text="${d.quantity * d.unitPrice * (1 - d.discount)}"+ "VND">amount</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<a  th:if="${order.statusId == 0}" th:href="@{|/order/cancel/${order.id}|}" id="button">Cancel Order</a>
+	</section>
+</main>		
+</html>

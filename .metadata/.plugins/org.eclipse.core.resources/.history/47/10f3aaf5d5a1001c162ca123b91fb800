@@ -1,0 +1,37 @@
+package weblaptoponline.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import weblaptoponline.dao.ProductDAO;
+import weblaptoponline.entity.Product;
+
+@Controller
+public class ProductController {
+		@Autowired
+		ProductDAO pdao;
+		@RequestMapping("/home/product")
+		public String index(Model model) {
+			List<Product> list=pdao.findAll();
+			model.addAttribute("items",list);
+			return "home/product";
+		}
+		@RequestMapping("/product/index/{id}")
+		public String index(Model model, @PathVariable("id") Integer id) {
+			List<Product> list=pdao.findByCategoryId(id);
+			model.addAttribute("items",list);
+			return "home/product";
+		}
+		@RequestMapping("/home/search")
+		public String index(Model model, @RequestParam("keywords") String keywords) {
+			List<Product> list=pdao.findBKeywords("%"+keywords+"%");
+			model.addAttribute("items",list);
+			return "home/product";
+		}
+}

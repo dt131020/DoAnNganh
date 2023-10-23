@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+
+  <div class="sidebar">
+					<div class="sidebar_section">
+						<div class="sidebar_title">
+							<h5>Product Category</h5>
+						</div>
+						<ul class="sidebar_categories">
+						<th:block th:each="c:${categories}">
+						
+						<li ><a href="#" th:text="${c.nameVn}">Asus</a></li>
+							</th:block>
+						</ul>
+					</div>	
+
+					<!-- Price Range Filtering -->
+					<div class="sidebar_section">
+						<div class="sidebar_title">
+							<h5>Filter by Price</h5>
+						</div>
+						<p>
+							<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+						</p>
+						<div id="slider-range"></div>
+						<div class="filter_button"><span>filter</span></div>
+					</div>
+
+				
+
+				</div>
+</html>

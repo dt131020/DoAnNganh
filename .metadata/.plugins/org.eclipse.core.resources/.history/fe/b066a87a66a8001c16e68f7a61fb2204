@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="/shared/layout :: dynamic(~{::main})">
+
+<main th:fragment="main">
+	<br> <br> 
+	<h1>GIOI THIEU</h1>
+
+	
+	
+</main>
+</html>

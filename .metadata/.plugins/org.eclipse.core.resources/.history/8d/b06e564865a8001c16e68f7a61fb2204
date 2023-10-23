@@ -1,0 +1,34 @@
+package weblaptoponline.service;
+
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MailService {
+	@Autowired
+	JavaMailSender mailSender;
+	public void send(String email, String subject, String text) {
+		try {
+			MimeMessage mail = mailSender.createMimeMessage();
+			MimeMessageHelper helper= new MimeMessageHelper(mail, "utf-8");
+			helper.setTo(email);
+			helper.setSubject(subject);
+			helper.setText(text);
+			
+			InternetAddress from = new InternetAddress("poly@gmail.com", "FPT PolyTechnic");
+			helper.setFrom(from);
+			helper.setReplyTo(from);
+			mailSender.send(mail);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("Unenable to send to"+ email);
+		}
+	}
+	
+}

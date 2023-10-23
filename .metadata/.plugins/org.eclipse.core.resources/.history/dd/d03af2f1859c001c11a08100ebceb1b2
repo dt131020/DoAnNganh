@@ -1,0 +1,19 @@
+package weblaptoponline.dao;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import weblaptoponline.entity.Product;
+
+public interface ProductsDAO extends JpaRepository<Product, Integer> {
+	@Query("SELECT * FROM Products")
+	List<Product> findAll();
+	@Query("SELECT p FROM Products p WHERE p.category.id=?1")
+	List<Product> findByCategoryId(Integer id);
+	@Query("SELECT p FROM Products p WHERE p.name LIKE ?")
+	List<Product> findBKeywords(String keywords);
+	
+
+}

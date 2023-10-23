@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="/shared/layout :: dynamic(~{::main})">
+
+<main th:fragment="main">
+	<br> <br> 
+	<div>
+	<i th:text="${message}">message</i>
+	 <form th:object="${user}" action="/account/sign-up/create" 
+    	method="post" enctype="multipart/form-data">
+    	
+        <label>Username:</label><br>
+        <input th:field="*{username}"><br>
+        
+        <label>Password:</label><br>
+        <input th:field="*{password}" type="password"><br>
+        
+        <label>Confirm Password:</label><br>
+        <input name="confirm" type="password"><br>
+        
+        <label>Full Name:</label><br>
+        <input th:field="*{fullname}"><br>
+        
+        <label>Address:</label><br>
+        <input th:field="*{address}"><br>
+        
+        <label>Mobile:</label><br>
+        <input th:field="*{mobile}"><br>
+        
+        <label>Email Address:</label><br>
+        <input th:field="*{email}"><br>
+        
+        <label>Photo:</label><br>
+        <input th:field="*{photo}" type="hidden">
+        <input name="photo_file" type="file"><br>
+
+        <hr>
+        <input name="activated" type="hidden" value="false">
+        <button>Sign Up</button>
+		</form>
+	</div>
+
+	
+	
+</main>
+</html>

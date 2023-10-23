@@ -1,0 +1,5 @@
+$(documen).ready(function(){
+	$(".cart-add").on("click",function(){
+		alert("ok");
+	})
+})

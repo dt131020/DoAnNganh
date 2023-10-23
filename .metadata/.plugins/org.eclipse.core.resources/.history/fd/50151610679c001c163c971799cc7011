@@ -1,0 +1,35 @@
+package weblaptoponline.entity;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name="sanpham")
+public class Product {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="masp")
+	Integer maSP;
+	@Column(name="tensp")
+	String tenSP;
+	String image;
+	@Column(name="soluong")
+	String soLuong;
+	Double gia;
+	@Column(name="giamgia")
+	Double giamGia;
+	@Column(name="baohanh")
+	@Temporal(TemporalType.DATE)
+	Date baoHanh;
+	@Column(name="maloai")
+	Integer maLoai;
+		
+}

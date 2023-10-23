@@ -1,0 +1,30 @@
+package weblaptoponline.controller;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import weblaptoponline.service.ShoppingCartService;
+
+@Controller
+public class ShoppingCartController {
+	@Autowired
+	ShoppingCartService cart;
+	@RequestMapping("/cart/view")
+	public Object view(Model model) {
+		return "cart/view";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/api/cart/add/{id}")
+	public Object add(@PathVariable("id") Integer id) {
+		cart.add(id);
+		return cart.getInfo();
+	}
+}
+ 

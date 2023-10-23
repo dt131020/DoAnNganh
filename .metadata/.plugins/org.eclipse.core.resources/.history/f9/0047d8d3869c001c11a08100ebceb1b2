@@ -1,0 +1,13 @@
+package weblaptoponline;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class WeblaptoponlineApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

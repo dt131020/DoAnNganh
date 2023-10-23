@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="/shared/layout :: dynamic(~{::main})">
+
+<main th:fragment="main">
+<link rel="stylesheet" type="text/css" href="/css/form.css">
+
+
+ <div class="container1">
+    <form th:object="${user}" action="/account/edit-profile/update"  method="post" enctype="multipart/form-data" id="form" class="form">
+        <h2>Edit Profile</h2>
+        <div class="form-control">
+          <label for="username">Username</label>
+          <input type="text"  th:field="*{username}" id="username" placeholder="Enter Username" />
+          <small>Error Message</small>
+        </div>
+        <div class="form-control">
+          <label for="fullname">Fullname</label>
+          <input type="text" th:field="*{fullname}" id="fullname" placeholder="Enter Fullname" />
+          <small>Error Message</small>
+        </div>
+        <div class="form-control">
+          <label for="address">Address</label>
+          <input type="text" th:field="*{address}" id="address" placeholder="Enter Address" />
+          <small>Error Message</small>
+        </div>
+        <div class="form-control">
+          <label for="mobile">Mobile</label>
+          <input type="text"th:field="*{mobile}" id="mobile" placeholder="Enter Mobile" />
+          <small>Error Message</small>
+        </div>
+        <div class="form-control">
+          <label for="email">Email Address:</label>
+          <input type="text" th:field="*{email}" id="email" placeholder="Enter Email" />
+          <small>Error Message</small>
+        </div>
+        <div class="form-control">
+          <label for="imgg">Ảnh đại hiện :</label>
+           <input  th:field="*{photo}" type="hidden">
+            <input name="photo_file" type="file"></br>
+            <img th:src="@{|/images/photos/*{photo}|}" height="400px">
+        </div>
+        <input th:field="*{activated}" type="hidden">
+        <input th:field="*{password}" type="hidden">
+         <div class="form-control">
+        <button type="submit" >Update Profile</button>
+        </div>
+      </form>
+    </div>
+	<script src="/js/validation-edit-profile.js"></script>
+</main>
+</html>

@@ -1,0 +1,5 @@
+$(documen).ready(function(){
+	$(".red_button add_to_cart_button").on("click",function(){
+		alert("ok");
+	})
+})

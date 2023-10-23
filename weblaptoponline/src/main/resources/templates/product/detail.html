@@ -1,0 +1,87 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="/shared/layout::dynamic(~{::view})">
+
+<div th:fragment="view">
+
+	<link rel="stylesheet" href="/plugins/themify-icons/themify-icons.css" />
+	<link rel="stylesheet" type="text/css" href="/styles/single_styles.css" />
+	<link rel="stylesheet" type="text/css"
+		href="/styles/single_responsive.css" />
+	<style>
+.cart-add {
+	background-color: #f44336; /* Green */
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}p.with-breaks{
+	white-space: pre-wrap;
+}
+</style>
+
+	<br>
+	<div class="row">
+		<div class="col-lg-7">
+			<div class="single_product_pics">
+				<div class="row">
+					<div class="col-lg-12 image_col order-lg-2 order-1">
+						<div class="single_product_image">
+							<div class="single_product_image_background">
+								<img th:src="@{|/images/items/${item.image}|}  " width="400"
+									height="400">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-5">
+			<div class="product_details">
+				<div class="product_details_title">
+					<h2 th:text="${item.name}"></h2>
+					<p class="with-breaks" th:text="${item.description}"></p>
+				</div>
+				<div
+					class="free_delivery d-flex flex-row align-items-center justify-content-center">
+					<span class="ti-truck"></span><span>free delivery</span>
+				</div>
+				<div th:text="${item.unitPrice}" class="original_price"></div>
+				<div th:text="${item.unitPrice*(1-item.discount)}"
+					class="product_price"></div>
+
+				<div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">					
+						<a th:id=${item.id} class="cart-add">add to cart</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 		<h5>Sản phẩm tương tự</h5> -->
+<!-- 		<div class="product-grid"> -->
+<!-- 			<div class="product-item men" th:each="p: ${item.category.products}"> -->
+<!-- 				<div class="product discount product_filter"> -->
+<!-- 					<div class="product_image"> -->
+<!-- 						<a th:href="@{|/product/detail/${p.id}|}"> <img -->
+<!-- 							th:src="@{|/images/items/${p.image}|}"> -->
+<!-- 						</a> -->
+<!-- 					</div> -->
+<!-- 					<div class="favorite favorite_left"></div> -->
+<!-- 					<div -->
+<!-- 						class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"> -->
+<!-- 						<span th:text="${p.disCount*100 + '%'}"></span> -->
+<!-- 					</div> -->
+<!-- 					<div class="product_info"> -->
+<!-- 						<h6 class="product_name" th:text="${p.name}"></h6> -->
+<!-- 						<div class="product_price" th:text="${p.unitPrice}"></div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="red_button add_to_cart_button"> -->
+<!-- 					<a th:id=${p.id} class="cart-add">add to cart</a> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+</html>

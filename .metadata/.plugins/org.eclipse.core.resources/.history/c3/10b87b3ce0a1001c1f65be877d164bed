@@ -1,0 +1,10 @@
+$(documen).ready(function(){
+	$(".cart-add").on("click",function(){
+		var id = $(this).attr("id");
+		$.getJSON(url).then(info => {
+			$("#checkout-items").html(`1`)
+
+		})
+		
+	})
+})

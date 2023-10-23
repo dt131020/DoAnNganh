@@ -1,0 +1,5 @@
+package weblaptoponline.controller;
+
+public class ShoppingCartController {
+
+}

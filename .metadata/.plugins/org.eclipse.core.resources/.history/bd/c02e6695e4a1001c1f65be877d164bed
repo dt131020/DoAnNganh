@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="/shared/layout::dynamic(~{::view})" >
+<div th:fragment="view">
+
+</div>
+
+  
+</html>

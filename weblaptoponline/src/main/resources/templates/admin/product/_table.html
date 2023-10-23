@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org">
+ <section class="panel important">
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Unit Price</th>
+      <th>Discount</th>
+      <th>Quantity</th>
+      <th>Date</th>
+      <th>Category</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="e: ${list}">
+      <td th:text="${e.id}"></td>
+      <td th:text="${e.name}"></td>
+      <td><img th:src="@{|/images/items/${e.image}|}" height="50px" width="50px" alt=""></td>
+      <td th:text="${e.unitPrice}"></td>
+      <td th:text="${e.discount}"></td>
+      <td th:text="${e.quantity}"></td>
+      <td th:text="${e.productDate}"></td>
+      <td th:text="${e.category.nameVn}"></td>
+      <td>
+      	<a th:href="@{|/admin/product/edit/${e.id}|}"><i class='fa fa-edit' style='color: blue ; font-size:24px'></i></a> 
+      	<a th:href="@{|/admin/product/delete/${e.id}|}"><i class='fa fa-remove' style='color: red ; font-size:24px'></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</section>
+
+</html>

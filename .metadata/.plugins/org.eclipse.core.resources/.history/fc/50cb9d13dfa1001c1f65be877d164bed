@@ -1,0 +1,6 @@
+$(documen).ready(function(){
+	$(".cart-add").on("click",function(){
+		var id = $(this).attr("id");
+		alert("ok" + id);
+	})
+})

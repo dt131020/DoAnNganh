@@ -1,0 +1,66 @@
+package weblaptoponline.service;
+
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+
+import weblaptoponline.entity.Account;
+
+@Service
+public class MailService {
+	@Autowired
+	JavaMailSender mailSender;
+	public void send(String email, String subject, String text) {
+		try {
+			MimeMessage mail = mailSender.createMimeMessage();
+			MimeMessageHelper helper= new MimeMessageHelper(mail, "utf-8");
+			helper.setTo(email);
+			helper.setSubject(subject);
+			helper.setText(text);
+			
+			InternetAddress from = new InternetAddress("poly@gmail.com", "FPT PolyTechnic");
+			helper.setFrom(from);
+			helper.setReplyTo(from);
+			mailSender.send(mail);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("Unenable to send to"+ email);
+		}
+	}
+	public void sendWelcome(Account account) {
+		String email= account.getEmail();
+		String subject = "Welcome to GearHub";
+		String text = "http://localhost:8080/account/active"+account.getUsername();
+		this.send(email,subject,text);
+	}
+	public void sendToken(Account account) {
+		String email = account.getEmail();
+		String subject = "Password Token";
+		String text = "Token:"+Integer.toHexString(account.getPassword().hashCode());
+		this.send(email,subject,text);
+	}
+	public void sendOrder (String email, Long orderId) {
+		String subject = "Your Orders";
+		String text = "http://localhost:8080/order/detail"+ orderId;
+		this.send(subject, text);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

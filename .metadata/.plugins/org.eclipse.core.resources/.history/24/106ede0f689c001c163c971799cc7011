@@ -1,0 +1,5 @@
+package weblaptoponline.dao;
+
+public class CategoryDAO {
+
+}

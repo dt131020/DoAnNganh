@@ -1,0 +1,25 @@
+package weblaptoponline.entity;
+
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
+@Table(name="loaisp")
+public class Category {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="maloai")
+Integer Id;
+	@Column(name="tenloai")
+String tenLoai;
+	@OneToMany(mappedBy="category")
+	List<Product> products;
+	
+}

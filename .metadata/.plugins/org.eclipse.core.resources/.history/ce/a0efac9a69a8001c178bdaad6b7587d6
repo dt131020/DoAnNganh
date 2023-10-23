@@ -1,0 +1,56 @@
+package weblaptoponline.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import weblaptoponline.dao.AccountDAO;
+import weblaptoponline.entity.Account;
+import weblaptoponline.service.MailService;
+import weblaptoponline.service.UploadService;
+
+@Controller
+public class AccountController {
+		@Autowired
+		AccountDAO adao;
+		
+		@Autowired
+		UploadService uploadService;
+		
+		@Autowired
+		MailService mailService;
+		
+		@Autowired
+		BCryptPasswordEncoder pe;
+		
+		@RequestMapping("/account/sign-up")
+		public String signUpForm(Model model, @ModelAttribute("user") Account account) {
+			return "account/sign-up";
+		}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
